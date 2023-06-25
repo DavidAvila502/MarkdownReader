@@ -1,9 +1,24 @@
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+   View,
+   Text,
+   StyleSheet,
+   TouchableOpacity,
+   ActivityIndicator,
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import Logo from "../../../assets/resources/Logomarkdown.svg";
 import RightArrow from "../../../assets/resources/RigthAarrow.svg";
+import { useFonts } from "expo-font";
 
 const LoginScreen = () => {
+   const [fontsLoaded] = useFonts({
+      "Roboto-Bold": require("../../../assets/fonts/Roboto-Bold.ttf"),
+   });
+
+   if (!fontsLoaded) {
+      return <ActivityIndicator height={20} color={"black"} />;
+   }
+
    return (
       <View style={styles.mainConatiner}>
          <StatusBar style="auto" backgroundColor="#393939" />
@@ -64,9 +79,9 @@ const styles = StyleSheet.create({
 
    textIniciar: {
       fontSize: 18,
-      fontWeight: "bold",
       color: "#828282",
       marginTop: 15,
+      fontFamily: "Roboto-Bold",
    },
 });
 
